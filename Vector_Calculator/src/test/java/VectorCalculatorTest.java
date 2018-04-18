@@ -34,8 +34,79 @@ public class VectorCalculatorTest {
 		expected.setCurrentVector(expectedData);
 
 		Vector resultMatrix = cal.addVectors(a, b);
-
+		System.out.println("Square Root: \u221A");
 		if (cal.areSameMatrices(expected, resultMatrix)) {
+			assertTrue(true);
+		} else {
+			assertTrue(false);
+		}
+	}
+
+	@Test
+	public void vectorMagnitude() {
+		VectorCalculator cal = new VectorCalculator();
+		Vector a = new Vector("A", 3, 1, VectorOrientation.VERTICAL);
+
+		double[][] a_data = new double[3][1];
+		double[][] b_data = new double[3][1];
+		double expectedDotProduct = 8.558621384311845;
+
+		a_data[0][0] = 8;
+		a_data[1][0] = -3;
+		a_data[2][0] = 0.5;
+
+		a.setCurrentVector(a_data);
+
+		int sizeA = a_data.length * a_data[0].length;
+
+		double[] dataA = new double[sizeA];
+
+		int count = 0;
+		for (int i = 0; i < a_data.length; i++) {
+			for (int j = 0; j < a_data[i].length; j++) {
+				dataA[count] = a_data[i][j];
+				count++;
+			}
+		}
+
+		double resultDotProduct = cal.magnitude(a);
+		
+		 if (expectedDotProduct == resultDotProduct) {
+		 assertTrue(true);
+		 } else {
+		 assertTrue(false);
+		 }
+
+	}
+
+	public void vectorMagnitude2() {
+		VectorCalculator cal = new VectorCalculator();
+		Vector a = new Vector("A", 2, 1, VectorOrientation.VERTICAL);
+
+		double[][] a_data = new double[2][1];
+		double[][] b_data = new double[2][1];
+		double expectedDotProduct = 3.1622776601683795;
+
+		a_data[0][0] = 3;
+		a_data[1][0] = 1;
+
+		a.setCurrentVector(a_data);
+
+		int sizeA = a_data.length * a_data[0].length;
+
+		double[] dataA = new double[sizeA];
+
+		int count = 0;
+		for (int i = 0; i < a_data.length; i++) {
+			for (int j = 0; j < a_data[i].length; j++) {
+				dataA[count] = a_data[i][j];
+				count++;
+			}
+		}
+
+		double resultDotProduct = cal.magnitude(a);
+
+		if (expectedDotProduct == resultDotProduct) {
 			assertTrue(true);
 		} else {
 			assertTrue(false);

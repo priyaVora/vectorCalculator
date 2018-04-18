@@ -79,6 +79,23 @@ public class VectorCalculator {
 
 	}
 
+	public double magnitude(Vector currentVector) {
+		double valueUnderSquareRoot = 0;
+
+		for (int i = 0; i < currentVector.getCurrentVector().length; i++) {
+			for (int j = 0; j < currentVector.getCurrentVector()[i].length; j++) {
+				double squaredValue = currentVector.getCurrentVector()[i][j] * currentVector.getCurrentVector()[i][j];
+				// System.out.println("Original Value: " +
+				// currentVector.getCurrentVector()[i][j]);
+				// System.out.println("Squared Value: " + squaredValue);
+				valueUnderSquareRoot += squaredValue;
+			}
+		}
+		// System.out.println("Value under root: -\\|" + valueUnderSquareRoot);
+		// System.out.println(Math.sqrt(valueUnderSquareRoot));
+		return Math.sqrt(valueUnderSquareRoot);
+	}
+
 	public boolean areSameMatrices(Vector firstVector, Vector secondVector) {
 		if (firstVector == null || secondVector == null) {
 			return false;
