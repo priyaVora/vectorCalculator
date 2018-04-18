@@ -1,6 +1,7 @@
 package control;
 
 import model.Vector;
+import model.VectorOrientation;
 
 public class VectorCalculator {
 
@@ -18,12 +19,12 @@ public class VectorCalculator {
 			String[][] answer = new String[firstVector.getRow()][firstVector.getColumn()];
 
 			Vector addedVector = new Vector("" + firstVector.getName() + "+" + secondVector.getName(),
-					firstVector.getRow(), firstVector.getColumn());
-			for (int row = 0; row < firstVector.getCurrentMatrix().length; row++) {
-				for (int col = 0; col < firstVector.getCurrentMatrix()[row].length; col++) {
-					showWork[row][col] = "(" + firstVector.getCurrentMatrix()[row][col] + ")" + " + " + "("
-							+ secondVector.getCurrentMatrix()[row][col] + ")";
-					double add = firstVector.getCurrentMatrix()[row][col] + secondVector.getCurrentMatrix()[row][col];
+					firstVector.getRow(), firstVector.getColumn(), firstVector.getVectorOrientation());
+			for (int row = 0; row < firstVector.getCurrentVector().length; row++) {
+				for (int col = 0; col < firstVector.getCurrentVector()[row].length; col++) {
+					showWork[row][col] = "(" + firstVector.getCurrentVector()[row][col] + ")" + " + " + "("
+							+ secondVector.getCurrentVector()[row][col] + ")";
+					double add = firstVector.getCurrentVector()[row][col] + secondVector.getCurrentVector()[row][col];
 					answer[row][col] = "(" + add + ")";
 					newData[row][col] = add;
 				}
@@ -31,7 +32,7 @@ public class VectorCalculator {
 
 			showWorkAddition = showWork;
 			answerAddition = answer;
-			addedVector.setCurrentMatrix(newData);
+			addedVector.setCurrentVector(newData);
 			return addedVector;
 		} else {
 			System.out.println("Dimensions are not same...");
@@ -39,7 +40,7 @@ public class VectorCalculator {
 		return null;
 	}
 
-	public Vector subtractMatrices(Vector firstVector, Vector secondVector) {
+	public Vector subtractVectors(Vector firstVector, Vector secondVector) {
 		if (areSameDimensions(firstVector, secondVector)) {
 
 			double[][] newData = new double[firstVector.getRow()][firstVector.getColumn()];
@@ -47,12 +48,12 @@ public class VectorCalculator {
 			String[][] answer = new String[firstVector.getRow()][firstVector.getColumn()];
 
 			Vector subtractVector = new Vector("" + firstVector.getName() + "-" + secondVector.getName(),
-					firstVector.getRow(), firstVector.getColumn());
-			for (int row = 0; row < firstVector.getCurrentMatrix().length; row++) {
-				for (int col = 0; col < firstVector.getCurrentMatrix()[row].length; col++) {
-					showWork[row][col] = "(" + firstVector.getCurrentMatrix()[row][col] + ")" + " + " + "("
-							+ secondVector.getCurrentMatrix()[row][col] + ")";
-					double sub = firstVector.getCurrentMatrix()[row][col] - secondVector.getCurrentMatrix()[row][col];
+					firstVector.getRow(), firstVector.getColumn(), firstVector.getVectorOrientation());
+			for (int row = 0; row < firstVector.getCurrentVector().length; row++) {
+				for (int col = 0; col < firstVector.getCurrentVector()[row].length; col++) {
+					showWork[row][col] = "(" + firstVector.getCurrentVector()[row][col] + ")" + " + " + "("
+							+ secondVector.getCurrentVector()[row][col] + ")";
+					double sub = firstVector.getCurrentVector()[row][col] - secondVector.getCurrentVector()[row][col];
 					answer[row][col] = "(" + sub + ")";
 					newData[row][col] = sub;
 
@@ -61,7 +62,7 @@ public class VectorCalculator {
 
 			showWorkSubtraction = showWork;
 			answerSubtraction = answer;
-			subtractVector.setCurrentMatrix(newData);
+			subtractVector.setCurrentVector(newData);
 			return subtractVector;
 		} else {
 			System.out.println("Dimensions are not same...");
@@ -69,13 +70,22 @@ public class VectorCalculator {
 		return null;
 	}
 
+	public double dotProduct(double[] a, double[] b) {
+		double sum = 0;
+		for (int i = 0; i < a.length; i++) {
+			sum += a[i] * b[i];
+		}
+		return sum;
+
+	}
+
 	public boolean areSameMatrices(Vector firstVector, Vector secondVector) {
 		if (firstVector == null || secondVector == null) {
 			return false;
 		}
-		for (int row = 0; row < firstVector.getCurrentMatrix().length; row++) {
-			for (int col = 0; col < firstVector.getCurrentMatrix()[row].length; col++) {
-				if (firstVector.getCurrentMatrix()[row][col] == secondVector.getCurrentMatrix()[row][col]) {
+		for (int row = 0; row < firstVector.getCurrentVector().length; row++) {
+			for (int col = 0; col < firstVector.getCurrentVector()[row].length; col++) {
+				if (firstVector.getCurrentVector()[row][col] == secondVector.getCurrentVector()[row][col]) {
 
 				} else {
 					return false;
