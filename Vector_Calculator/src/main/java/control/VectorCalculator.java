@@ -110,12 +110,17 @@ public class VectorCalculator {
 
 	public Vector unitVector(Vector currentVector) {
 		double magnitudeOfVector = magnitude(currentVector);
+		System.out.println("Magntitude: " + magnitudeOfVector);
 		double oneDivideByVector = 1 / magnitudeOfVector;
-		Vector answer = multiplyValueToVector(oneDivideByVector, currentVector);
-		return answer;
+		System.out.println("One divide by magnitude: " + oneDivideByVector);
+
+		Vector newVector = multiplyValueToVector(oneDivideByVector, currentVector);
+
+		return newVector;
 	}
 
 	public Vector multiplyValueToVector(double coefficient, Vector currentVector) {
+		System.out.println("Value: " + coefficient);
 		Vector temp = new Vector();
 		double[][] updatedData = new double[currentVector
 				.getCurrentVector().length][currentVector.getCurrentVector()[0].length];

@@ -34,8 +34,92 @@ public class VectorCalculatorTest {
 		expected.setCurrentVector(expectedData);
 
 		Vector resultMatrix = cal.addVectors(a, b);
-		System.out.println("Square Root: \u221A");
+
 		if (cal.areSameMatrices(expected, resultMatrix)) {
+			assertTrue(true);
+		} else {
+			assertTrue(false);
+		}
+	}
+
+	@Test
+	public void unitVectorTest() {
+		VectorCalculator cal = new VectorCalculator();
+		Vector a = new Vector("A", 2, 1, VectorOrientation.VERTICAL);
+		Vector expected = new Vector("A", 2, 1, VectorOrientation.VERTICAL);
+
+		double[][] a_data = new double[2][1];
+		double[][] expectedData = new double[2][1];
+
+		a_data[0][0] = 4;
+		a_data[1][0] = -6;
+
+		expectedData[0][0] = 0.5547001962252291;
+		expectedData[1][0] = -0.8320502943378437;
+
+		a.setCurrentVector(a_data);
+		expected.setCurrentVector(expectedData);
+
+		int sizeA = a_data.length * a_data[0].length;
+
+		double[] dataA = new double[sizeA];
+
+		int count = 0;
+		for (int i = 0; i < a_data.length; i++) {
+			for (int j = 0; j < a_data[i].length; j++) {
+				dataA[count] = a_data[i][j];
+				count++;
+			}
+		}
+
+		Vector resultDotProduct = a;
+
+		resultDotProduct.setCurrentVector(cal.unitVector(a).getCurrentVector());
+
+		resultDotProduct.printVector();
+		if (cal.areSameMatrices(resultDotProduct, expected)) {
+			assertTrue(true);
+		} else {
+			assertTrue(false);
+		}
+	}
+	
+	@Test
+	public void unitVectorTest2() {
+		VectorCalculator cal = new VectorCalculator();
+		Vector a = new Vector("A", 2, 1, VectorOrientation.VERTICAL);
+		Vector expected = new Vector("A", 2, 1, VectorOrientation.VERTICAL);
+
+		double[][] a_data = new double[2][1];
+		double[][] expectedData = new double[2][1];
+
+		a_data[0][0] = 0;
+		a_data[1][0] = -3;
+
+		expectedData[0][0] = 0;
+		expectedData[1][0] = -1;
+
+		a.setCurrentVector(a_data);
+		expected.setCurrentVector(expectedData);
+
+		int sizeA = a_data.length * a_data[0].length;
+
+		double[] dataA = new double[sizeA];
+
+		int count = 0;
+		for (int i = 0; i < a_data.length; i++) {
+			for (int j = 0; j < a_data[i].length; j++) {
+				dataA[count] = a_data[i][j];
+				count++;
+			}
+		}
+
+		Vector resultDotProduct = a;
+
+		resultDotProduct.setCurrentVector(cal.unitVector(a).getCurrentVector());
+
+		resultDotProduct.printVector();
+		if (cal.areSameMatrices(resultDotProduct, expected)) {
 			assertTrue(true);
 		} else {
 			assertTrue(false);
