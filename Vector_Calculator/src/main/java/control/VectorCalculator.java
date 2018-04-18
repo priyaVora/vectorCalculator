@@ -96,6 +96,40 @@ public class VectorCalculator {
 		return Math.sqrt(valueUnderSquareRoot);
 	}
 
+	public double[] grabDataArray(int sizeA, double[][] a_data) {
+		int count = 0;
+		double[] dataA = new double[sizeA];
+		for (int i = 0; i < a_data.length; i++) {
+			for (int j = 0; j < a_data[i].length; j++) {
+				dataA[count] = a_data[i][j];
+				count++;
+			}
+		}
+		return dataA;
+	}
+
+	public Vector unitVector(Vector currentVector) {
+		double magnitudeOfVector = magnitude(currentVector);
+		double oneDivideByVector = 1 / magnitudeOfVector;
+		Vector answer = multiplyValueToVector(oneDivideByVector, currentVector);
+		return answer;
+	}
+
+	public Vector multiplyValueToVector(double coefficient, Vector currentVector) {
+		Vector temp = new Vector();
+		double[][] updatedData = new double[currentVector
+				.getCurrentVector().length][currentVector.getCurrentVector()[0].length];
+		for (int i = 0; i < currentVector.getCurrentVector().length; i++) {
+			for (int j = 0; j < currentVector.getCurrentVector()[i].length; j++) {
+				double product = coefficient * currentVector.getCurrentVector()[i][j];
+				updatedData[i][j] = product;
+			}
+		}
+
+		temp.setCurrentVector(updatedData);
+		return temp;
+	}
+
 	public boolean areSameMatrices(Vector firstVector, Vector secondVector) {
 		if (firstVector == null || secondVector == null) {
 			return false;

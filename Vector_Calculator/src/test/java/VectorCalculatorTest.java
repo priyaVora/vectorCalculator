@@ -70,12 +70,12 @@ public class VectorCalculatorTest {
 		}
 
 		double resultDotProduct = cal.magnitude(a);
-		
-		 if (expectedDotProduct == resultDotProduct) {
-		 assertTrue(true);
-		 } else {
-		 assertTrue(false);
-		 }
+
+		if (expectedDotProduct == resultDotProduct) {
+			assertTrue(true);
+		} else {
+			assertTrue(false);
+		}
 
 	}
 
@@ -174,22 +174,13 @@ public class VectorCalculatorTest {
 
 		double[] dataA = new double[sizeA];
 		double[] dataB = new double[sizeB];
-		int count = 0;
-		for (int i = 0; i < a_data.length; i++) {
-			for (int j = 0; j < a_data[i].length; j++) {
-				dataA[count] = a_data[i][j];
-				count++;
-			}
-		}
-		int count2 = 0;
-		for (int i = 0; i < b_data.length; i++) {
-			for (int j = 0; j < b_data[i].length; j++) {
-				dataB[count2] = b_data[i][j];
-				count2++;
-			}
-		}
 
+		dataA = cal.grabDataArray(sizeA, a_data);
+		dataB = cal.grabDataArray(sizeB, b_data);
 		double resultDotProduct = cal.dotProduct(dataA, dataB);
+		System.out.println("Expected: " + expectedDotProduct);
+		System.out.println("Result: " + resultDotProduct);
+
 		if (resultDotProduct == expectedDotProduct) {
 			assertTrue(true);
 			System.out.println("Expected: " + expectedDotProduct);
