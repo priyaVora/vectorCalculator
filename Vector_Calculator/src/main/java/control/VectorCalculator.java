@@ -125,11 +125,6 @@ public class VectorCalculator {
 		setOriginalWorkMagnitude(originalValue);
 		setSquaredWorkMagnitude(squaredValue);
 
-		System.out.println("Final Original Value " + this.getOriginalWorkMagnitude());
-		System.out.println("Final Squared Value: " + this.getSquaredWorkMagnitude());
-
-		System.out.println("Value under root: -\\|" + valueUnderSquareRoot);
-		System.out.println(Math.sqrt(valueUnderSquareRoot));
 		setCurrentSquareRootValue("-\\|" + valueUnderSquareRoot);
 		return Math.sqrt(valueUnderSquareRoot);
 	}
