@@ -103,8 +103,8 @@ public class VectorCalculator {
 
 	public double magnitude(Vector currentVector) {
 		double valueUnderSquareRoot = 0;
-		String originalValue = "";
-		String squaredValue = "";
+		String originalValue = "-\\|";
+		String squaredValue = "-\\|";
 
 		for (int i = 0; i < currentVector.getCurrentVector().length; i++) {
 			for (int j = 0; j < currentVector.getCurrentVector()[i].length; j++) {
@@ -130,7 +130,7 @@ public class VectorCalculator {
 
 		System.out.println("Value under root: -\\|" + valueUnderSquareRoot);
 		System.out.println(Math.sqrt(valueUnderSquareRoot));
-		setCurrentSquareRootValue("" + valueUnderSquareRoot);
+		setCurrentSquareRootValue("-\\|" + valueUnderSquareRoot);
 		return Math.sqrt(valueUnderSquareRoot);
 	}
 
