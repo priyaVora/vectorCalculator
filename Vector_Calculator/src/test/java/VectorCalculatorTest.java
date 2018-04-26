@@ -83,7 +83,7 @@ public class VectorCalculatorTest {
 			assertTrue(false);
 		}
 	}
-	
+
 	@Test
 	public void unitVectorTest2() {
 		VectorCalculator cal = new VectorCalculator();
@@ -262,9 +262,11 @@ public class VectorCalculatorTest {
 		dataA = cal.grabDataArray(sizeA, a_data);
 		dataB = cal.grabDataArray(sizeB, b_data);
 		double resultDotProduct = cal.dotProduct(dataA, dataB);
-		System.out.println("Expected: " + expectedDotProduct);
-		System.out.println("Result: " + resultDotProduct);
 
+		System.out.println("///////////////////////////////////////////");
+		String showWork = cal.getDotProductShowWork();
+		System.out.println("Show Work: " + showWork);
+		System.out.println("Show Work 2: " + cal.getDotProductAnswer());
 		if (resultDotProduct == expectedDotProduct) {
 			assertTrue(true);
 			System.out.println("Expected: " + expectedDotProduct);
