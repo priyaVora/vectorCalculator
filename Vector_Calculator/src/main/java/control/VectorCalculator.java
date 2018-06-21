@@ -129,11 +129,6 @@ public class VectorCalculator {
 		return Math.sqrt(valueUnderSquareRoot);
 	}
 
-	public double[] crossProduct() {
-		return null;
-
-	}
-
 	private void decomposeVectorToV1(Vector v, Vector w) {
 		Vector v1;
 		int sizeA = v.getCurrentVector().length * v.getCurrentVector()[0].length;
